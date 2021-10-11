@@ -18,6 +18,7 @@ def calcula_progressao(numero, razao, contador = 0):
     else:
         # faz a soma do número mais a razão e print.
         numero += razao
+        # soma-se mais 1 ao contador
         contador += 1
         print(f"A{contador} : {numero}")
         # chama a função ela mesma sendo o número = ele + razão / cria a recursão
@@ -44,6 +45,7 @@ def cal_pa(numero, razao, limite=infinito, contador = 1):
         else:
             # soma o número com a razão e print.
             numero += razao
+            # soma-se mais 1 ao contador
             contador += 1
             print(f"A{contador} : {numero}")
 
