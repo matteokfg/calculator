@@ -1,12 +1,33 @@
 defmodule Calculadora do
-  #cria-se o módulo da calculadora
-  def adiçao(num1, num2) do
-    #função da adição
+  @moduledoc """
+  Cria-se o módulo da calculadora, na qual averá as funções de `adicao/2`,
+  `subtracao/2`, `multiplicacao/2`, `divisao/2` e `potenciacao/2`.
+  """
+
+  def adicao(num1, num2) do
+    @doc """
+    Função da adição.
+
+    ## Teste:
+      Calculadora.adicao(1, 1)
+      iex> 2
+    """
+
     IO.puts("#{num1} + #{num2} e igual a: #{num1 + num2}")
   end
 
-  def subtraçao(num1, num2) do
-    #função da subtração, que vai até zero
+  def subtracao(num1, num2) do
+    @doc """
+    -> Função da subtração, que vai até zero.
+
+    ## Teste:
+      Calculadora.subtraçao(1, 2)
+      iex> 1 - 2 e negativo!
+
+      Calculadora.subtracao(8, 3)
+      iex> 8 - 3 e igual a: 5
+    """
+
     if num1 - num2 < 0 do
       IO.puts("#{num1} - #{num2} e negativo!")
     else
