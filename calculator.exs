@@ -1,7 +1,7 @@
 defmodule Calculadora do
   @moduledoc """
   Cria-se o módulo da calculadora, na qual averá as funções de `adicao/2`,
-  `subtracao/2`, `multiplicacao/2`, `divisao/2` e `potenciacao/2`.
+  `subtracao/2`, `multiplicacao/2`, `divisao/2`, `potenciacao/2` e `radiciacao/1`.
   """
 
   def adicao(num1, num2) do
@@ -72,5 +72,35 @@ defmodule Calculadora do
 
     num3 = :math.pow(num1, num2)
     IO.puts("#{num1} elevado a #{num2} da: #{num3}")
+  end
+
+  def radiciacao(num1) do
+    @doc """
+    -> Essa forma faz raíz quadrada.
+    ## Teste:
+      Calculadora.radiciacao(16)
+      iex> A raiz quadrada de 16 e: 4
+    """
+
+    num2 = :math.sqrt(num1)
+    IO.puts("A raiz quadrada de #{num1} e: #{num2}")
+  end
+end
+
+defmodule Teorema do
+  @moduledoc """
+    Esse modulo contem teormeas matematicos, que poderao ser resolvidos com ele.
+  """
+
+  def de_pitagoras_hip(b, c) do
+    @doc """
+      -> calculo da hipotenusa ( maior lado do triangulo )
+      ## Teste:
+        Teorema.de_pitagoras_hip(3, 4)
+        iex> 5
+    """
+
+    a = :math.sqrt(:math.pow(b, 2) + :math.pow(c, 2))
+    IO.puts("A hipotenusa e: #{a}")
   end
 end
