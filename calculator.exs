@@ -67,7 +67,7 @@ defmodule Calculadora do
 
     ## Teste:
       Calculadora.potenciacao(4, 2)
-      iex> 4 elevado a 2 da: 16
+      iex> 4 elevado a 2 da: 16.0
     """
 
     num3 = :math.pow(num1, num2)
@@ -79,7 +79,7 @@ defmodule Calculadora do
     -> Essa forma faz raíz quadrada.
     ## Teste:
       Calculadora.radiciacao(16)
-      iex> A raiz quadrada de 16 e: 4
+      iex> A raiz quadrada de 16 e: 4.0
     """
 
     num2 = :math.sqrt(num1)
@@ -94,13 +94,38 @@ defmodule Teorema do
 
   def de_pitagoras_hip(b, c) do
     @doc """
-      -> calculo da hipotenusa ( maior lado do triangulo )
+      -> calculo da hipotenusa ( maior lado do triangulo ), a partir dos dois catetos
       ## Teste:
         Teorema.de_pitagoras_hip(3, 4)
-        iex> 5
+        iex>A hipotenusa e: 5.0
     """
 
     a = :math.sqrt(:math.pow(b, 2) + :math.pow(c, 2))
     IO.puts("A hipotenusa e: #{a}")
+  end
+
+  def de_pitagoras_cat(a, c) do
+    @doc """
+      -> calculo o cateto, a partir da hipotenusa e do outro cateto
+      ## Teste:
+        Teorema.de_pitagoras_cat(5, 3)
+        iex>O cateto e: 4.0
+    """
+
+    b = :math.sqrt(:math.pow(a, 2) - :math.pow(c, 2))
+    IO.puts("O cateto e: #{b}")
+  end
+
+  def de_bhaskara(a, b, c) do
+    @doc """
+      -> calcula as duas raizes de uma equacao de segundo grau usando a formula de bhaskara
+      ## Teste:
+      Teorema.de_bhaskara(1, 8, -9)
+      iex>Aplicando a formula, o primeiro x e: 1 e o segundo x e: -9
+    """
+    delta = :math.pow(b, 2) - 4*a*c
+    x1 = div(trunc(-1*b + :math.sqrt(delta)), 2*a)
+    x2 = div(trunc(-1*b - :math.sqrt(delta)), 2*a)
+    IO.puts("Aplicando a formula, o primeiro x e: #{x1} e o segundo x e: #{x2}")
   end
 end
