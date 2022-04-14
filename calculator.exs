@@ -123,9 +123,57 @@ defmodule Teorema do
       Teorema.de_bhaskara(1, 8, -9)
       iex>Aplicando a formula, o primeiro x e: 1 e o segundo x e: -9
     """
+
     delta = :math.pow(b, 2) - 4*a*c
     x1 = div(trunc(-1*b + :math.sqrt(delta)), 2*a)
     x2 = div(trunc(-1*b - :math.sqrt(delta)), 2*a)
     IO.puts("Aplicando a formula, o primeiro x e: #{x1} e o segundo x e: #{x2}")
+  end
+
+  def de_juros_compostos(c, i, n) do
+    @doc """
+      -> calcula o motante final e depois o juros usando o capital inicial, a taxa e o tempo percorrido,
+      sendo esses ultimos na mesma medida de tempo
+      ## Teste:
+      Teorema.de_juros_compostos(1000, 0.1, 10)
+      iex>Aplicando a formula, o motante final e: 1010.04 , sendo o juros: 10.04
+    """
+
+    m = c * :math.pow((1 + i), n)
+    j = m - c
+    IO.puts("Aplicando a formula, o motante final e: #{m} , sendo o juros: #{j}")
+  end
+
+  def fundamental_da_reta(y \\ nil, yo \\ nil, m \\ nil, x \\ nil, xo \\ nil) do
+    @doc """
+      -> calcula o parametro que for nil, ou seja o q nao foi calculado ainda
+      ## Teste:
+      Teorema.fundamental_da_reta(nil, -1.5, -2, -2.25, 0)
+      iex>Y e igual a 3
+    """
+
+    cond do
+      y == nil and yo != nil and m != nil and x != nil and xo != nil ->
+        y = m * (x - xo) + yo
+        IO.puts("Y e igual a #{y}")
+
+      yo == nil and y != nil and m != nil and x != nil and xo != nil->
+        yo = -1 * (m * (x - xo) - y)
+        IO.puts("Y inicial e igual a #{yo}")
+
+      m == nil and yo != nil and y != nil and x != nil and xo != nil->
+        m = div((y- yo), (x - xo))
+        IO.puts("O coeficiente linear e igual a #{m}")
+
+      x == nil and yo != nil and m != nil and y != nil and xo != nil->
+        x = div((y - yo), m) + xo
+        IO.puts("X e igual a #{x}")
+
+      xo == nil and yo != nil and m != nil and x != nil and y != nil->
+        xo = -1 * (div((y - yo), m) - x)
+        IO.puts("X inical e igual a #{xo}")
+
+      true -> IO.puts("Esta faltando informaçoes, tente novamente")
+    end
   end
 end
